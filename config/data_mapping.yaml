@@ -1,0 +1,121 @@
+# Column mapping configuration for standardizing field names across sheets
+# Maps various possible column names to standardized field names
+
+column_mappings:
+  serial_number:
+    - "S.no"
+    - "S.No"
+    - "Serial No"
+    - "Serial Number"
+    - "Sl.No"
+    
+  status:
+    - "Status"
+    - "Farmer Status"
+    - "Record Status"
+    
+  farmer_code:
+    - "Farmer Code"
+    - "Farmer ID"
+    - "FarmerCode"
+    - "Farmer_Code"
+    
+  farmer_name:
+    - "Farmer Name"
+    - "Name"
+    - "FarmerName"
+    - "Farmer_Name"
+    
+  govt_id_number:
+    - "Govt id num"
+    - "Government ID"
+    - "Govt ID"
+    - "ID Number"
+    - "Aadhar"
+    
+  primary_contact:
+    - "Primary Contact"
+    - "Contact"
+    - "Phone"
+    - "Mobile"
+    - "Contact Number"
+    
+  farmer_created_date:
+    - "Farmer Created Date"
+    - "Created Date"
+    - "Registration Date"
+    - "Farmer_Created_Date"
+    
+  plot_created_date:
+    - "Plot Created Date"
+    - "Plot Date"
+    - "Plot Registration"
+    - "Plot_Created_Date"
+    
+  sync_date:
+    - "Sync Date"
+    - "Synchronization Date"
+    - "Last Sync"
+    - "Sync_Date"
+    
+  updation_date:
+    - "Updation Date"
+    - "Update Date"
+    - "Last Updated"
+    - "Modified Date"
+    - "Updation_Date"
+    
+  area:
+    - "Area"
+    - "Plot Area"
+    - "Land Area"
+    - "Area (Acres)"
+    
+  gps_area:
+    - "GPS Area"
+    - "GPS_Area"
+    - "Calculated Area"
+    - "Measured Area"
+    
+  village:
+    - "Village"
+    - "Village Name"
+    - "Location"
+    - "Village_Name"
+
+# Data type mappings
+data_types:
+  serial_number: "int64"
+  status: "string"
+  farmer_code: "string"
+  farmer_name: "string"
+  govt_id_number: "string"
+  primary_contact: "string"
+  farmer_created_date: "datetime64[ns]"
+  plot_created_date: "datetime64[ns]"
+  sync_date: "datetime64[ns]"
+  updation_date: "datetime64[ns]"
+  area: "float64"
+  gps_area: "float64"
+  village: "string"
+
+# Validation rules
+validation_rules:
+  required_fields:
+    - "farmer_code"
+    - "farmer_name"
+    - "village"
+  
+  unique_fields:
+    - "farmer_code"
+    - "govt_id_number"
+  
+  numeric_fields:
+    - "area"
+    - "gps_area"
+  
+  date_fields:
+    - "farmer_created_date"
+    - "plot_created_date"
+    - "sync_date"
+    - "updation_date" 

@@ -1,0 +1,113 @@
+# Database configuration for PostgreSQL connection and table schema
+
+database:
+  # Connection settings (will be overridden by environment variables)
+  host: "localhost"
+  port: 5432
+  database: "bellary_db"
+  username: "postgres"
+  password: "password"
+  
+  # Connection pool settings
+  pool_size: 5
+  max_overflow: 10
+  pool_timeout: 30
+  pool_recycle: 3600
+
+# Table schema definition
+table_schema:
+  table_name: "bellary_farmers"
+  
+  columns:
+    id:
+      type: "SERIAL"
+      primary_key: true
+      
+    serial_number:
+      type: "INTEGER"
+      nullable: true
+      
+    status:
+      type: "VARCHAR(50)"
+      nullable: true
+      
+    farmer_code:
+      type: "VARCHAR(100)"
+      nullable: false
+      unique: true
+      
+    farmer_name:
+      type: "VARCHAR(255)"
+      nullable: false
+      
+    govt_id_number:
+      type: "VARCHAR(50)"
+      nullable: true
+      unique: true
+      
+    primary_contact:
+      type: "VARCHAR(20)"
+      nullable: true
+      
+    farmer_created_date:
+      type: "TIMESTAMP"
+      nullable: true
+      
+    plot_created_date:
+      type: "TIMESTAMP"
+      nullable: true
+      
+    sync_date:
+      type: "TIMESTAMP"
+      nullable: true
+      
+    updation_date:
+      type: "TIMESTAMP"
+      nullable: true
+      
+    area:
+      type: "DECIMAL(10,4)"
+      nullable: true
+      
+    gps_area:
+      type: "DECIMAL(10,4)"
+      nullable: true
+      
+    village:
+      type: "VARCHAR(100)"
+      nullable: false
+      
+    source_sheet:
+      type: "VARCHAR(50)"
+      nullable: true
+      
+    imported_at:
+      type: "TIMESTAMP"
+      default: "CURRENT_TIMESTAMP"
+      
+    created_at:
+      type: "TIMESTAMP"
+      default: "CURRENT_TIMESTAMP"
+      
+    updated_at:
+      type: "TIMESTAMP"
+      default: "CURRENT_TIMESTAMP"
+
+# Indexes for performance
+indexes:
+  - name: "idx_farmer_code"
+    columns: ["farmer_code"]
+    unique: true
+    
+  - name: "idx_village"
+    columns: ["village"]
+    
+  - name: "idx_govt_id"
+    columns: ["govt_id_number"]
+    unique: true
+    
+  - name: "idx_created_date"
+    columns: ["farmer_created_date"]
+    
+  - name: "idx_source_sheet"
+    columns: ["source_sheet"] 
